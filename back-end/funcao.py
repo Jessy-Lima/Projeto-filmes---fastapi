@@ -20,21 +20,20 @@ def criar_tabela():
             cursor.close()
             conexao.commit()
 
-# def cadastrar_filme(titulo, genero, ano, nota):
-#     conexao, cursor = conector()
-#     if conexao:
-#         try:
-#             cursor.execute(
-#                 "INSERT INTO filmes (titulo, genero, ano, nota) VALUES (%s,%s,%s,%s)",
-#                 (titulo, genero, ano, nota)
-#             )
-#             conexao.commit()
-#         except Exception as erro:
-#             print(f"Erro ao cadastrar o filme {erro}")
-#         finally:
-#             cursor.close()
-#             conexao.commit()
-# cadastrar_filme("Era do gelo 3", "aventura","2009","9")
+def cadastrar_filme(titulo, genero, ano, nota):
+    conexao, cursor = conector()
+    if conexao:
+        try:
+            cursor.execute(
+                "INSERT INTO filmes (titulo, genero, ano, nota) VALUES (%s,%s,%s,%s)",
+                (titulo, genero, ano, nota)
+            )
+            conexao.commit()
+        except Exception as erro:
+            print(f"Erro ao cadastrar o filme {erro}")
+        finally:
+            cursor.close()
+            conexao.commit()
 
 def listar_filmes():
     conexao, cursor = conector()
@@ -50,7 +49,7 @@ def listar_filmes():
             cursor.close()
             conexao.close()
         
-print(listar_filmes())
+
 
 def atualizar_filme(id_filme, nova_nota):
     conexao, cursor = conector()
@@ -67,7 +66,7 @@ def atualizar_filme(id_filme, nova_nota):
             cursor.close()
             conexao.close()
 
-print(atualizar_filme(10,2))
+
 
 def deletar_filme(id_filme):
     conexao, cursor = conector()
@@ -88,4 +87,3 @@ def deletar_filme(id_filme):
             cursor.close()
             conexao.close()
 
-deletar_filme(3)
